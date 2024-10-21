@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root{
-    --md-dark-color: #1d1d1d;
-    --dark-color: #171717;
+    --md-dark-color: #00000019;
+    --dark-color: #9b273a;
     --light-dark-color: #292929;
-    --yellow-color: #11cad4;
+    --yellow-color: #a6d411;
 }
 *{
     padding: 0;
@@ -25,7 +25,10 @@ img{
 }
 .wrapper{
     min-height: 100vh;
-    background-color: var(--dark-color);
+    background: url('./img/pexels-ron-lach-9807584.jpg');
+    background-size: cover;
+    background-position: center;
+    
 }
 .wrapper .container{
     max-width: 1200px;
