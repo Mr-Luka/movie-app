@@ -44,4 +44,17 @@ function displayMoviesList(movies) {
     }
 }
 
+function loadMovieDetails() {
+    const searchList = document.querySelectorAll('.search-list-item');
+    searchList.forEach(movie => {
+        movie.addEventListener('click', async()=> {
+            searchList.classList.add('hide-search-list');
+            inputBox = '';
+            const result = await fetch(`http://www.omdbapi.com/?i=${movie.dataset.id}&page=1&apikey=ac7d252c`);
+            const res = await result.json()
+            displayMovieDetails(res);
+        })
+    })
+}
+
 
