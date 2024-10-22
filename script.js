@@ -11,3 +11,14 @@ async function moviesApi (searchTerm) {
 }
 moviesApi('Alien');
 
+function searchMovies () {
+    const searchTerm = (inputBox.value).trim();
+    if(searchTerm.length > 0) {
+        searchList.classList.remove('hide-search-list')
+        moviesApi(searchTerm);
+    } else {
+        searchList.classList.add('hide-search-list')
+    }
+}
+
+
