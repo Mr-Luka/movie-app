@@ -18,3 +18,4 @@ function searchMovie (){
         searchList.classList.add('hide-search-list');
     }
 }
+
