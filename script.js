@@ -21,4 +21,27 @@ function searchMovies () {
     }
 }
 
+function displayMoviesList(movies) {
+    searchList.innerHTML = '';
+    for (let index = 0; index < movies.length; index++) {
+        let movieListItem = document.createElement('div');
+        movieListItem.classList.add('search-list-item');
+        if (movies[index].Poster !== 'N/A') {
+            moviePoster = movies[index].Poster;
+        } else {
+            moviePoster = "image_not_found.png";
+        }
+        movieListItem.innerHTML = `
+            <div class="search-item-thumbnail">
+                <img src="${moviePoster}">
+            </div>
+            <div class="search-item-info">
+                <h3>${movies[index].Title}</h3>
+                <p>${movies[index].Year}</p>
+            </div>
+        `;
+        searchList.appendChild(movieListItem)
+    }
+}
+
 
