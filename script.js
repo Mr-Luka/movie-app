@@ -26,7 +26,7 @@ function displayMoviesList (movies) {
     searchList.innerHTML = "";
     for (let index = 0; index < movies.length; index++){
         let searchMovies = document.createElement('div');
-        searchMovies.dataset.id = movies[index].imbID;
+        searchMovies.dataset.id = movies[index].imdbID;
         searchMovies.classList.add('search-list-item');
 
         if( movies[index].Poster !== 'N/A') {
@@ -49,15 +49,36 @@ function displayMoviesList (movies) {
 } 
 
 function loadMovieDetails () {
-    const searchListMovies = searchList.querySelectorAll('search-list-item');
+    const searchListMovies = searchList.querySelectorAll('.search-list-item');
     searchListMovies.forEach(movie => {
         movie.addEventListener('click', async ()=> {
             searchBox.value = '';
             searchList.classList.add('hide-search-list');
             const response = await fetch (`http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=ac7d252c`);
             const data = await response.json();
-            displayMovies(data)
+            displayMovieDetails(data)
         })
     })
 }
 
+function displayMovieDetails(details) {
+        resultGrid.innerHTML = `
+        <div class="movie-poster">
+            <img src="${(details.Poster != "N/A}") ? details.Poster : "Image_not_found.png"} alt="movie poster">
+        </div>
+        <div class="movie-info box">
+            <h3 class="movie-title">${details.Title}</h3>
+            <ul class="movie-misc-info">
+                <li class="year">Year: ${details.Year}</li>
+                <li class="rated">Ratings: ${details.Rated}</li>
+                <li class="released">Released: ${details.Released}</li>
+            </ul>
+                <p class="genre"><b>Genre:</b> ${details.Genre}</p>
+                <p class="writer"><b>Writer:</b> ${details.Writer}</p>
+                <p class="actors"><b>Actors:</b> ${details.Actors}</p>
+                <p class="plot"><b>Plot:</b> ${details.Plot}</p>
+                <p class="language"><b>Language:</b> ${details.Language}</p>
+                <p class="awards"><b><i class="fas fa-award"></i></b> ${details.Awards}</p>
+        </div>`;
+    
+}

@@ -103,6 +103,10 @@ img{
     overflow-y: scroll;
     z-index: 10;
 }
+
+.search-list:hover {
+    animation: zoomIn 0.9s ease-in-out;
+}
 .search-list .search-list-item{
     background-color: var(--light-dark-color);
     padding: 0.5rem;
@@ -167,17 +171,29 @@ img{
     max-width: 300px;
     margin: 0 auto;
     border: 4px solid #fff;
+    box-shadow: 20px 10px 10px rgba(0, 0, 0, 0.44);
 }
+
+.movie-poster img:hover{
+    animation: zoomIn 0.9s ease-in-out;
+}
+
 .movie-info{
-    text-align: center;
+    padding-left: 1.5rem;
     color: #fff;
-    padding-top: 3rem;
+    background: rgba(0, 0, 0, 0.183);
+    border-radius: 35px;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
 }
+
+
 
 /* movie info stylings */
 .movie-title{
     font-size: 2rem;
     color: var(--yellow-color);
+    padding-top: 2rem;
 }
 .movie-misc-info{
     list-style-type: none;
@@ -231,6 +247,30 @@ img{
 .movie-info .awards i{
     color: var(--yellow-color);
     margin: 1rem 0.7rem 0 0;
+}
+
+
+@keyframes zoomIn {
+    0% {
+        opacity: 1;
+        transform: scale(1)
+    }
+    25%{
+        opacity: 1;
+        transform: scale(1.1)
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2)
+    }
+    75%{
+        opacity: 1;
+        transform: scale(1.1)
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
 }
 
 @media(max-width: 450px){
