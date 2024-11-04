@@ -83,11 +83,24 @@ function displayMovieDetails(details) {
     
 };
 
-async function onLoadMovies() {
-    const response = await fetch(`http://www.omdbapi.com/?page=1&apikey=ac7d252c`)
-    const data = await response.json();
-    console.log(data);
-}
-onLoadMovies();
 
-// window.addEventListener('onload', onLoadMovies);
+
+async function nowPlaying () {
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZmZlMjVhNGM1NzdkZGUxYzcyZTUzYzMwYmI5MmZkMiIsIm5iZiI6MTcyOTYyOTA0Ny4wMzEwMDUsInN1YiI6IjY2YjNjYTE1MWVmMzI1MzU2N2NjYzEzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.w1DXnE5wXtIHFtoV3qIaMZomfSiN2n_K2EY6yXmpqQk'
+  }
+};
+
+await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
+  .then(res => res.json())
+  .then(res => {
+    console.log(res);
+    const nowPlayingMovies = res.results;
+    console.log(nowPlayingMovies)
+  })
+  .catch(err => console.error(err));
+}
+nowPlaying()

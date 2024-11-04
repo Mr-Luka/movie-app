@@ -21,7 +21,7 @@ a{
 img{
     width: 100%;
     display: block;
-    border-radius: 15px;;
+    border-radius: 15px;
 }
 .wrapper{
     min-height: 100vh;
@@ -159,10 +159,36 @@ img{
     border-radius: 10px;
 }
 
-/* js related class */
+
 .hide-search-list{
     display: none;
 }
+
+.popular-movies {
+    color: rgb(249, 71, 71);
+    font-weight: 800;
+    margin-left: 2rem;
+}
+.movies-container {
+    display: flex;
+    align-items: center;
+}
+
+.mini-movie-image {
+    width: 30%;
+    display: block;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    margin: 2rem;
+}
+
+.mini-movie-name {
+    font-size: 1.2rem;
+    color: white;
+    margin: 1rem 0 0 2rem;
+}
+
 
 /* movie result */
 .result-container{
