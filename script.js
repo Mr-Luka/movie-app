@@ -81,4 +81,6 @@ function displayMovieDetails(details) {
                 <p class="awards"><b><i class="fas fa-award"></i></b> ${details.Awards}</p>
         </div>`;
     
-}
+};
+
+window.addEventListener('onload')
