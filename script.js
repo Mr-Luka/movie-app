@@ -106,7 +106,7 @@ function generateUniqueRandom(maxNr) {
 
 
 
-
+const baseImageUrl = "https://image.tmdb.org/t/p/w500";
 async function nowPlaying () {
 const options = {
   method: 'GET',
@@ -120,44 +120,27 @@ await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=
   .then(res => res.json())
   .then(res => {
     console.log(res);
-    const nowPlayingMovies = res.results;
+    const moviesList20 = res.results;
+    // const nowPlayingMovies = res.results[generateUniqueRandom(21)];
     moviesList.innerHTML = "";
-    for (let index = 0; index < nowPlayingMovies.length; index++){
-        let searchMovies = document.createElement('div');
-        searchMovies.dataset.id = nowPlayingMovies[index].imdbID;
-        searchMovies.classList.add('search-list-item');
-
-        if( movies[index].Poster !== 'N/A') {
-            moviePoster = nowPlayingMovies[index].Poster;
-        } else {
-            moviePoster = 'Image_not_found.png';
-        }
-        searchMovies.innerHTML = ``;
-    }
-    nowPlayingMovies.forEach(movie => {
-        const randomIndex = generateUniqueRandom(21);
-        const movieElement = document.createElement('div');
-        movieElement.classList.add('movies-list');
-        movieElement.innerHTML = `
+    moviesList20.forEach(movie=> {
+        const movieCard = document.createElement('div');
+        movieCard.classList.add('movies-list');
+        movieCard.innerHTML = `
             <div class="mini-movie-image">
-                <img src="./img/scan002_44aad709-9cd8-4f62-924c-b7169ed73a19_480x.progressive.webp">
+                <img src="${baseImageUrl}${movie.poster_path}">
             </div>
             <div class="mini-movie-name">
-                <h4>Alien - Romulus</h4>
-                <p>2024</p>
-            </div>`;
-        moviesList.appendChild(movieElement)
-
+                <h4>${movie.title}</h4>
+                <p>${movie.release_date}</p>
+        `
+        moviesList.appendChild(movieCard);
     })
-    // for (let index = 0; index < movies.length; index++){
-    //     const div = document.createElement('div');
-    //     div.classList.add('movies-list');
-        
 
-    //     // console.log(movie)
-    // }
-    console.log(nowPlayingMovies)
-  })
-  .catch(err => console.error(err));
+    console.log(moviesList20)
+    }
+
+
+  ).catch(err => console.error(err));
 }
 nowPlaying()
