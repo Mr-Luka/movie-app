@@ -83,4 +83,11 @@ function displayMovieDetails(details) {
     
 };
 
-window.addEventListener('onload')
+async function onLoadMovies() {
+    const response = await fetch(`http://www.omdbapi.com/?page=1&apikey=ac7d252c`)
+    const data = await response.json();
+    console.log(data);
+}
+onLoadMovies();
+
+// window.addEventListener('onload', onLoadMovies);
