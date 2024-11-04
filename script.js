@@ -3,6 +3,7 @@
 const searchBox = document.querySelector('#movie-search-box');
 const searchList = document.querySelector('#search-list');
 const resultGrid = document.querySelector('#result-grid')
+const moviesList = document.querySelector('.movies-element');
 
 async function moviesTermApi(searchTerm) {
     const response = await fetch( `http://www.omdbapi.com/?s=${searchTerm}&apikey=ac7d252c`)
@@ -84,6 +85,27 @@ function displayMovieDetails(details) {
 };
 
 
+let haveIt = [];
+
+function generateUniqueRandom(maxNr) {
+    let random = (Math.random() * maxNr).toFixed();
+    random = Number(random);
+
+    if(!haveIt.includes(random)) {
+        haveIt.push(random);
+        return random;
+    } else {
+        if(haveIt.length < maxNr) {
+         return  generateUniqueRandom(maxNr);
+        } else {
+          console.log('No more numbers available.')
+          return false;
+        }
+    }
+}
+
+
+
 
 async function nowPlaying () {
 const options = {
@@ -99,6 +121,41 @@ await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=
   .then(res => {
     console.log(res);
     const nowPlayingMovies = res.results;
+    moviesList.innerHTML = "";
+    for (let index = 0; index < nowPlayingMovies.length; index++){
+        let searchMovies = document.createElement('div');
+        searchMovies.dataset.id = nowPlayingMovies[index].imdbID;
+        searchMovies.classList.add('search-list-item');
+
+        if( movies[index].Poster !== 'N/A') {
+            moviePoster = nowPlayingMovies[index].Poster;
+        } else {
+            moviePoster = 'Image_not_found.png';
+        }
+        searchMovies.innerHTML = ``;
+    }
+    nowPlayingMovies.forEach(movie => {
+        const randomIndex = generateUniqueRandom(21);
+        const movieElement = document.createElement('div');
+        movieElement.classList.add('movies-list');
+        movieElement.innerHTML = `
+            <div class="mini-movie-image">
+                <img src="./img/scan002_44aad709-9cd8-4f62-924c-b7169ed73a19_480x.progressive.webp">
+            </div>
+            <div class="mini-movie-name">
+                <h4>Alien - Romulus</h4>
+                <p>2024</p>
+            </div>`;
+        moviesList.appendChild(movieElement)
+
+    })
+    // for (let index = 0; index < movies.length; index++){
+    //     const div = document.createElement('div');
+    //     div.classList.add('movies-list');
+        
+
+    //     // console.log(movie)
+    // }
     console.log(nowPlayingMovies)
   })
   .catch(err => console.error(err));
