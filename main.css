@@ -28,7 +28,6 @@ img{
     background: url('./img/pexels-ron-lach-9807584.jpg');
     background-size: cover;
     background-position: center;
-    
 }
 .wrapper .container{
     max-width: 1200px;
@@ -169,26 +168,39 @@ img{
     font-weight: 800;
     margin-left: 2rem;
 }
-.movies-container {
-    display: flex;
-    align-items: center;
-}
 
+.movies-container {
+    width: 90%;
+    height: auto;
+}
 .mini-movie-image {
     width: 30%;
-    display: block;
-    border-radius: 15px;
-    background-size: cover;
-    background-position: center;
+    height: auto;
     margin: 2rem;
 }
 
+.mini-movie-image img{
+    width: 100%;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+}
+
 .mini-movie-name {
+    width: 30%;
     font-size: 1.2rem;
     color: white;
     margin: 1rem 0 0 2rem;
 }
 
+.movies-element {
+    margin-left: 3rem;
+    width: 100%;
+    background-color: #9b273a6d;
+    display: flex;
+    flex-wrap: wrap;
+}
+movies-list
 
 /* movie result */
 .result-container{

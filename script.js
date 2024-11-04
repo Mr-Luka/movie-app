@@ -133,6 +133,7 @@ await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=
             <div class="mini-movie-name">
                 <h4>${movie.title}</h4>
                 <p>${movie.release_date}</p>
+            </div>
         `
         moviesList.appendChild(movieCard);
     })
