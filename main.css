@@ -170,13 +170,17 @@ img{
 }
 
 .movies-container {
-    width: 90%;
+    width: 95%;
     height: auto;
+    margin-left: 2rem;
+    background-color: #fbfbfb1f;
+    border-radius: 55px;
 }
 .mini-movie-image {
-    width: 30%;
+    width: 100%;
     height: auto;
     margin: 2rem;
+    margin: 2rem 2rem 2rem 0;
 }
 
 .mini-movie-image img{
@@ -187,25 +191,22 @@ img{
 }
 
 .mini-movie-name {
-    width: 30%;
+    width: 100%;
     font-size: 1.2rem;
     color: white;
     margin: 1rem 0 0 2rem;
 }
 
 .movies-element {
-    margin-left: 3rem;
-    width: 100%;
-    background-color: #9b273a6d;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
 }
-movies-list
+
 
 /* movie result */
-.result-container{
-    padding: 3rem 0;
-}
+
 .movie-poster img{
     max-width: 300px;
     margin: 0 auto;
