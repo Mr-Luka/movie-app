@@ -162,6 +162,9 @@ img{
 .hide-search-list{
     display: none;
 }
+.hide {
+    display: none;
+}
 
 .popular-movies {
     color: rgb(249, 71, 71);
@@ -179,7 +182,6 @@ img{
 .mini-movie-image {
     width: 100%;
     height: auto;
-    margin: 2rem;
     margin: 2rem 2rem 2rem 0;
 }
 
@@ -202,7 +204,10 @@ img{
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
     gap: 1rem;
     padding: 1rem;
+    margin-top: 1rem;
 }
+
+
 
 
 /* movie result */

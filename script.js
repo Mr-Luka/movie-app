@@ -2,8 +2,10 @@
 
 const searchBox = document.querySelector('#movie-search-box');
 const searchList = document.querySelector('#search-list');
-const resultGrid = document.querySelector('#result-grid')
+const resultGrid = document.querySelector('#result-grid');
+const moviesContainer = document.querySelector('.movies-container');
 const moviesList = document.querySelector('.movies-element');
+const popularTitle = document.querySelector('.popular-movies');
 
 async function moviesTermApi(searchTerm) {
     const response = await fetch( `http://www.omdbapi.com/?s=${searchTerm}&apikey=ac7d252c`)
@@ -55,6 +57,8 @@ function loadMovieDetails () {
         movie.addEventListener('click', async ()=> {
             searchBox.value = '';
             searchList.classList.add('hide-search-list');
+            moviesContainer.classList.add('hide');
+            popularTitle.classList.add('hide');
             const response = await fetch (`http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=ac7d252c`);
             const data = await response.json();
             displayMovieDetails(data)
@@ -62,7 +66,7 @@ function loadMovieDetails () {
     })
 }
 
-function displayMovieDetails(details) {
+function displayMovieDetails(details) { 
         resultGrid.innerHTML = `
         <div class="movie-poster">
             <img src="${(details.Poster != "N/A}") ? details.Poster : "Image_not_found.png"} alt="movie poster">
