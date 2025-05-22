@@ -28,6 +28,10 @@ img{
     background: url('./img/pexels-ron-lach-9807584.jpg');
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .wrapper .container{
     max-width: 1200px;
@@ -78,8 +82,8 @@ img{
 
 .typewriter-animation {
   animation: 
-    typewriter 5s steps(50) 1s 1 normal both, 
-    blinkingCursor 500ms steps(50) infinite normal;
+    typewriter 2s steps(50) 1s 1 normal both, 
+    blinkingCursor 400ms steps(50) infinite normal;
 }
 @keyframes typewriter {
   from { width: 0; }
@@ -200,7 +204,7 @@ img{
 }
 
 .movies-container {
-    width: 95%;
+    width: 80%;
     height: auto;
     margin-left: 2rem;
     background-color: #fbfbfb1f;
